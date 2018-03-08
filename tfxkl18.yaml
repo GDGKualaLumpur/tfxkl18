@@ -1,0 +1,58 @@
+service: tfxkl18
+api_version: 1
+threadsafe: true
+runtime: python27
+
+handlers:
+- url: /tfxkl18/bower_components
+  static_dir: build/tfxkl18/bower_components
+  secure: always
+
+- url: /tfxkl18/data
+  static_dir: build/tfxkl18/data
+  secure: always
+
+- url: /tfxkl18/images
+  static_dir: build/tfxkl18/images
+  secure: always
+
+- url: /tfxkl18/src
+  static_dir: build/tfxkl18/src
+  secure: always
+
+- url: /tfxkl18/service-worker.js
+  static_files: build/tfxkl18/service-worker.js
+  upload: build/tfxkl18/service-worker.js
+  expiration: "1s"
+  secure: always
+
+- url: /tfxkl18/manifest.json
+  static_files: build/tfxkl18/manifest.json
+  upload: build/tfxkl18/manifest.json
+  secure: always
+
+- url: /tfxkl18/.*
+  static_files: build/tfxkl18/index.html
+  upload: build/tfxkl18/index.html
+  secure: always
+
+- url: /tfxkl18.*
+  script: main.app
+  secure: always
+
+- url: /tfxkl.*
+  script: main.app
+  secure: always 
+
+- url: /
+  static_files: build/tfxkl18/index.html
+  upload: build/tfxkl18/index.html
+  secure: always
+
+skip_files:
+  - bower_components
+  - src
+  - data
+  - images
+  - functions
+  - .idea

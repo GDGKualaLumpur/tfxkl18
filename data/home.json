@@ -1,0 +1,34 @@
+{
+    "featuredvideo": [
+        {
+            "title": "TensorFlow Dev Summit 2017 Keynote",
+            "url": "https://youtu.be/4n1AHvDvVvw",
+            "image": "images/v1.jpg"
+        },
+        {
+            "title": "Machine Learning for Everyone",
+            "url": "https://youtu.be/mWl45NkFBOc",
+            "image": "images/v2.jpg"
+        },
+        {
+            "title": "TensorFlow in Medicine - Retinal Imaging ",
+            "url": "https://youtu.be/oOeZ7IgEN4o",
+            "image": "images/v3.jpg"
+        }
+    ],
+    "highlightimage": [
+        {
+            "image": "images/1.jpg"
+        },{
+            "image": "images/2.jpg"
+        },{
+            "image": "images/3.jpg"
+        },{
+            "image": "images/4.jpg"
+        },{
+            "image": "images/5.jpg"
+        },{
+            "image": "images/6.jpg"
+        }
+    ]
+}
