@@ -3,6 +3,8 @@
   "shell": "src/gdg-app.html",
   "fragments": [
     "src/gdg-home.html",
+    "src/gdg-attending.html",
+    "src/gdg-schedule.html",
     "src/gdg-communityguidelines.html"
   ],
   "sources": [

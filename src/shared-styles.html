@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .hero {
         font-family: "Google Sans", 'Noto', sans-serif;
         margin-left: 64px;
-        max-width: 500px;
+        max-width: 600px;
         width: 60%;
         color: #424242;
         padding: 64px 10px;
@@ -42,50 +42,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         line-height: 1.6;
       }
 
-      #accessibility {
-        background-color: rgb(209, 196, 233);
+      .io_callout {
+          font-family: "Google Sans", arial, sans-serif;
+          background: #e55b34;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          color: #fff;
+          margin-top: -64px;
+          opacity: 1;
+          padding: 0 20px;
+          position: relative;
+          -webkit-transition: opacity 400ms ease-in-out;
+          -o-transition: opacity 400ms ease-in-out;
+          transition: opacity 400ms ease-in-out;
+          z-index: 1;
+          max-width: 1380px;
+          width: 90%;
       }
 
-      #android {
-        background-color: rgb(174, 213, 129);
+      .io_callout_text {
+          font-size: 28px;
+          line-height: 40px;
+          padding: 70px 180px 70px 64px;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          position: relative;
+          font-weight: 400;
+          -webkit-font-smoothing: antialiased;
       }
-
-      #assistant {
-        background-color: rgb(28, 232, 181);
-      }
-
-      #cloud {
-        background-color: rgb(128, 203, 196);
-      }
-
-      #design {
-        background-color: rgb(248, 187, 208);
-      }
-
-      #firebase {
-        background-color: rgb(255, 213, 79);
-      }
-
-      #iot {
-        background-color: rgb(188, 170, 164);
-      }
-
-      #machinelearning {
-        background-color: rgb(188, 200, 251);
-      }
-
-      #misc {
-        background-color: rgb(197, 201, 233);
-      }
-
-      #mobileweb {
-        background-color: rgb(255, 241, 118);
-      }
-
-      #vr {
-        background-color: rgb(255, 138, 101);
-      }
-
 
       @media screen and (max-width: 860px) {
         .hero {
@@ -95,6 +79,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         .hero .hero_big_title {
           margin: 24px 6px;
+        }
+        .io_callout {
+            width: 100%;
+            margin-top: 0;
+        }
+        .io_callout_text {
+            padding: 46px 0;
+            line-height: 30px;
+            font-size: 20px;
         }
       }
     </style>

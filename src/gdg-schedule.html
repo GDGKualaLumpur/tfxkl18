@@ -1,0 +1,229 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-database-script.html">
+<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="gdg-dialog.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="gdg-schedule">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+      }
+
+      .schedule {
+        font-family: "Google Sans", 'Noto', sans-serif;
+        border-top: 1px solid #dcdcdc;
+        line-height: 1.87;
+      }
+
+      .schedule .schedule_note,
+      .schedule .schedule_loading {
+        background-color: #FAFAFA;
+        border-bottom: 1px solid #dcdcdc;
+        font-family: 'Roboto', 'Noto', sans-serif;
+      }
+
+      .schedule .schedule_note {
+        padding: 60px 74px;
+      }
+
+      .schedule .schedule_loading {
+        padding: 30px 74px;
+      }
+
+      .schedule .schedule_section {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      .schedule .schedule_events {
+        width: 100%;
+      }
+
+      .schedule .schedule_event {
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      .schedule .schedule_time {
+        padding: 30px 0 0 30px;
+        box-sizing: border-box;
+        min-width: 130px;
+        font-size: 24px;
+        border-right: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+      }
+
+      .schedule .schedule_time span {
+        margin-left: 4px;
+        font-size: 15px;
+      }
+
+      .schedule .schedule_event {
+        padding: 30px 60px;
+        -webkit-transition: background-color 150ms ease-in-out;
+        -o-transition: background-color 150ms ease-in-out;
+        transition: background-color 150ms ease-in-out;
+        cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      .schedule .schedule_event:hover {
+        background-color: #FAFAFA;
+      }
+
+      .schedule .schedule_detail {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1
+      }
+
+      .schedule .schedule_event_title {
+        color: #4A4A4A;
+        font-size: 22px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .schedule .schedule_event_meta {
+        font-size: 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        color: #424242;
+      }
+
+      .schedule .schedule_event_description {
+        margin-right: 8px;
+      }
+
+      @media screen and (max-width: 860px) {
+        .schedule .schedule_section {
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+        .schedule .schedule_time {
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          width: 100%;
+          padding: 14px 20px;
+          font-size: 20px;
+          background-color: #FAFAFA;
+        }
+        .schedule .schedule_event {
+          padding: 20px;
+        }
+        .schedule .schedule_note,
+        .schedule .schedule_loading {
+          padding: 24px;
+        }
+      }
+    </style>
+
+    <app-indexeddb-mirror id="indexeddb" key="schedule" data="{{sessions}}" persisted-data="{{persistedSessionsData}}"></app-indexeddb-mirror>
+
+    <div class="hero">
+      <div class="hero_big_title">Schedule</div>
+      <div class="hero_description">This is just a preview! More events will be added frequently, so make sure to check back often.</div>
+    </div>
+
+    <section name="agenda">
+      <div class="schedule" id="schedule">
+        <dom-if if="{{!persistedSessionsData}}">
+          <template>
+            <div class="schedule_loading">
+              Loading event information ...
+            </div>
+          </template>
+        </dom-if>
+        <dom-if if="{{persistedSessionsData}}">
+          <template>
+            <dom-repeat items="{{persistedSessionsData}}">
+              <template>
+                <div class="schedule_section">
+                  <div class="schedule_time">{{item.time}}
+                    <span>{{item.ampm}}</span>
+                  </div>
+                  <div class="schedule_events">
+                    <dom-repeat items="{{item.session}}">
+                      <template>
+                        <div class="schedule_event" on-tap="showDialog">
+                          <div class="schedule_detail">
+                            <div class="schedule_event_title">{{item.title}}</div>
+                            <div class="schedule_event_meta">
+                              <div class="schedule_event_description">{{item.duration}}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </dom-repeat>
+                  </div>
+                </div>
+              </template>
+            </dom-repeat>
+          </template>
+        </dom-if>
+      </div>
+    </section>
+  </template>
+
+  <script>
+    class GdgSchedule extends Polymer.GestureEventListeners(Polymer.Element) {
+      static get is() { return 'gdg-schedule'; }
+
+      static get properties() {
+        return {
+          page: {
+            notify: true,
+            value: 'agenda'
+          },
+          sessions: {
+            notify: true,
+            value: null
+          },
+          user: {
+            'observer': '_onUserChanged'
+          }
+        }
+      }
+
+      _onUserChanged() {
+        if (this.user == null || this.user) {
+          var agendaRef = firebase.database().ref('events_site/tfxkl18/agenda/');
+          agendaRef.on('value', snapshot => {
+            this.set('sessions', snapshot.val())
+          })
+        }
+      }
+
+      showDialog(e) {
+        this.dispatchEvent(new CustomEvent('showdialog', { detail: e.model.item }));
+      }
+
+      _toLowerCase(item) {
+        return item.replace(/ /g, '').toLowerCase();
+      }
+    }
+
+    window.customElements.define(GdgSchedule.is, GdgSchedule);
+  </script>
+</dom-module>

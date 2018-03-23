@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .hero {
         position: relative;
-        padding: 120px 10px 160px 10px;
+        padding: 120px 10px;
         max-width: 100%;
         width: auto;
         margin-left: 0;
@@ -40,11 +40,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .hero .hero_description {
-        position: absolute;
-        text-align: center;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        margin-top: 48px;
+        /* position: absolute; */
+        /* text-align: center; */
+        /* bottom: 0; */
+        /* left: 0; */
+        /* right: 0; */
       }
 
       .hero .hero_date {
@@ -63,12 +64,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
         position: absolute;
         top: 0;
         margin-right: 12px;
@@ -79,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 30px;
         color: #424242;
         -webkit-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24), 0 0 4px 0 rgba(0, 0, 0, 0.14);
-                box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24), 0 0 4px 0 rgba(0, 0, 0, 0.14)
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.24), 0 0 4px 0 rgba(0, 0, 0, 0.14)
       }
 
       .hero_card .hero_card_title {
@@ -96,7 +97,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -ms-flexbox;
         display: flex;
         -ms-flex-item-align: start;
-            align-self: flex-start;
+        align-self: flex-start;
         min-width: 0;
         padding: 6px 25px;
         border-radius: 2px;
@@ -110,35 +111,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 100%;
         background-size: cover;
         background-position: center;
-      }
-
-      .io_callout {
-        font-family: "Google Sans", arial, sans-serif;
-        background: #e55b34;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-        color: #fff;
-        margin-top: -64px;
-        opacity: 1;
-        padding: 0 20px;
-        position: relative;
-        -webkit-transition: opacity 400ms ease-in-out;
-        -o-transition: opacity 400ms ease-in-out;
-        transition: opacity 400ms ease-in-out;
-        z-index: 1;
-        max-width: 1380px;
-        width: 90%;
-      }
-
-      .io_callout_text {
-        font-size: 28px;
-        line-height: 40px;
-        padding: 70px 180px 70px 64px;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-        position: relative;
-        font-weight: 400;
-        -webkit-font-smoothing: antialiased;
       }
 
       .featured_videos {
@@ -160,20 +132,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: flex;
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
-            -ms-flex-flow: row wrap;
-                flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
         margin: 0 auto;
         max-width: 1280px;
         padding: 0 8px;
         -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
       }
 
       .featured_videos .featured_videos_item {
         width: 50%;
         padding: 0 14px;
         -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         margin-bottom: 28px;
       }
 
@@ -191,11 +163,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
         z-index: 1;
       }
 
@@ -235,13 +207,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         overflow: hidden;
         height: 600px;
         -webkit-perspective: 1000px;
-                perspective: 1000px;
+        perspective: 1000px;
         width: 5400px;
         -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
+        backface-visibility: hidden;
         -webkit-transform: translateX(0px);
-            -ms-transform: translateX(0px);
-                transform: translateX(0px);
+        -ms-transform: translateX(0px);
+        transform: translateX(0px);
         cursor: -webkit-grab;
       }
 
@@ -254,17 +226,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         right: 120px;
         width: 380px;
         -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         bottom: -90px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
         -ms-flex-pack: distribute;
-            justify-content: space-around;
+        justify-content: space-around;
         background: #f28c3c;
         color: #000;
         z-index: 1;
@@ -293,9 +265,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: 900px;
         pointer-events: none;
         -webkit-user-select: none;
-           -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       @media screen and (max-width: 980px) {
@@ -331,7 +303,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           position: initial;
           margin: -8px 0 0 0;
           -webkit-box-sizing: border-box;
-                  box-sizing: border-box;
+          box-sizing: border-box;
           height: auto;
         }
         .hero_card .hero_card_button {
@@ -348,15 +320,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         .io_belt {
           height: 300px;
-        }
-        .io_callout {
-          width: 100%;
-          margin-top: 0;
-        }
-        .io_callout_text {
-          padding: 46px 0;
-          line-height: 30px;
-          font-size: 20px;
         }
         .featured_videos .featured_videos_title {
           font-size: 22px;
@@ -397,18 +360,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="hero">
       <div class="hero_home">
         <img class="hero_logo" src="[[rootPath]]images/tensorflow.svg">
-        <div class="hero_title">TensorFlow Dev Summit Extended brings together a diverse mix of machine learning users from around the world for a full day of highly technical talks, demos, and conversation with the TensorFlow team and community.</div>
-        <div class="hero_description">
-          <!-- <div class="hero_date">April 2018 - Kuala Lumpur, Malaysia</div> -->
-          <!-- <div class="hero_location"></div> -->
-        </div>
+        <div class="hero_title">TensorFlow Dev Summit Extended brings together a diverse mix of machine learning users from around the world for
+          a full day of highly technical talks, demos, and conversation with the TensorFlow team and community.</div>
+        <div class="hero_description">14th April 2018 &middot; iTrain Malaysia, Kuala Lumpur</div>
       </div>
     </div>
 
     <div class="io_belt" style$="background-image: url([[rootPath]]images/hero.jpg)"></div>
 
     <div class="io_callout">
-      <div class="io_callout_text">TensorFlow Dev Summit 2018 will be extended to our beloved city Kuala Lumpur! Let's have a day to learn about TensorFlow with industry experts via talks and codelabs! </div>
+      <div class="io_callout_text">TensorFlow Dev Summit 2018 will be extended to our beloved city Kuala Lumpur! Let's have a day to learn about TensorFlow
+        with industry experts via talks and codelabs! </div>
     </div>
 
     <div class="featured_videos">
@@ -457,7 +419,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           ticket: {
             notify: true
-          }
+          },
         }
       }
 

@@ -22,8 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
 
 <link rel="lazy-import" href="gdg-home.html">
-<!-- <link rel="lazy-import" href="gdg-sessions.html"> -->
-<!-- <link rel="lazy-import" href="gdg-attending.html"> -->
+<link rel="lazy-import" href="gdg-schedule.html">
+<link rel="lazy-import" href="gdg-attending.html">
 <link rel="lazy-import" href="gdg-communityguidelines.html">
 <link rel="lazy-import" href="gdg-analytics.html">
 <link rel="lazy-import" href="../bower_components/polymerfire/firebase-auth-script.html">
@@ -49,7 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         z-index: 3;
       }
 
-      app-drawer app-toolbar{
+      app-drawer app-toolbar {
         margin-bottom: 12px;
         border-bottom: 1px solid #E0E0E0;
       }
@@ -79,9 +79,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         vertical-align: middle;
       }
 
-      .nav-list:last-of-type {
+      /* .nav-list:last-of-type {
         margin-right: 24px;
-      }
+      } */
 
       .nav-list {
         height: 100%;
@@ -89,28 +89,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -ms-flexbox;
         display: flex;
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
 
-      .nav-list a {
-        font-family: "Google Sans",arial,sans-serif;
+      .nav-list a,
+      .link {
+        font-family: "Google Sans", arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
         height: 100%;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         cursor: pointer;
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         vertical-align: middle;
-        color: #424242;;
+        color: #424242;
         font-size: 14px;
         padding: 3px 12px 0 12px;
         font-weight: 500;
@@ -122,7 +123,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .nav-list a:hover,
-      .nav-list.no-tab a.iron-selected:hover {
+      .nav-list.no-tab a.iron-selected:hover,
+      .link:hover {
         border-bottom: 2px solid #ffe0d3;
       }
 
@@ -148,15 +150,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
       }
 
-      footer .footer_hashtag .social{
+      footer .footer_hashtag .social {
         max-width: 360px;
         -webkit-font-smoothing: antialiased;
         color: #202124;
-        font-family: "Google Sans",arial,sans-serif;
+        font-family: "Google Sans", arial, sans-serif;
         font-size: 18px;
       }
 
@@ -173,22 +175,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-        -webkit-box-align: center;
-            -ms-flex-align: center;
-                align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
         padding: 50px 80px;
+      }
+
+      footer .footer_bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
       }
 
       footer .footer_logo {
         width: 120px;
+        margin-bottom: 48px;
       }
 
       footer .footer_logo img {
         width: 100%;
         height: auto;
+      }
+
+      footer .footer_link a {
+        text-decoration: none;
+        font-size: 14px;
+        color: #202124;
+        margin-right: 32px;
       }
 
       footer .footer_social a {
@@ -214,7 +227,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 14px;
       }
 
-      .drawer-list a {
+      .drawer-list a{
         display: block;
         padding: 0 16px;
         text-decoration: none;
@@ -239,9 +252,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         cursor: pointer;
         white-space: nowrap;
         -webkit-user-select: none;
-           -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       @media screen and (max-width: 860px) {
@@ -264,7 +277,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         .nav-list,
-        .header_logo {
+        .header_logo,
+        #header .link {
           display: none;
         }
 
@@ -291,11 +305,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         footer .footer_content {
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
-              -ms-flex-direction: column;
-                  flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
           -webkit-box-align: start;
-              -ms-flex-align: start;
-                  align-items: flex-start;
+          -ms-flex-align: start;
+          align-items: flex-start;
           padding: 50px 20px;
         }
 
@@ -323,7 +337,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </app-toolbar>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
             <a name="home" href="[[rootPath]]">Home</a>
-            <a name="communityguidelines" href="[[rootPath]]communityguidelines">Community Guidelines</a>
+            <a name="schedule" href="[[rootPath]]schedule">Schedule</a>
+            <a name="attending" href="[[rootPath]]attending">Attending</a>
+            <a name="registration" href="https://www.meetup.com/GDGKualaLumpur" target="_blank">Registration</a>
           </iron-selector>
         </app-drawer>
       </template>
@@ -339,26 +355,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <div style="flex:1"></div>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="nav-list" role="navigation">
             <a name="home" href="[[rootPath]]">Home</a>
-            <a name="communityguidelines" href="[[rootPath]]communityguidelines">Community Guidelines</a>
+            <a name="schedule" href="[[rootPath]]schedule">Schedule</a>
+            <a name="attending" href="[[rootPath]]attending">Attending</a>
           </iron-selector>
-          <iron-selector class="nav-list no-tab">
-            <!-- <dom-if if="[[!user]]">
-              <template>
-                <a on-tap="signIn">Sign In</a>
-              </template>
-            </dom-if>
-            <dom-if if="[[user]]">
-              <template>
-                <img src$="{{user.photoURL}}" on-tap="signIn">
-              </template>
-            </dom-if> -->
-          </iron-selector>
-          
+          <a class="link" name="registration" href="https://www.meetup.com/GDGKualaLumpur" target="_blank">Registration</a>
         </app-toolbar>
       </app-header>
 
       <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="view404" role="main">
         <gdg-home name="home" ticket="[[ticket]]"></gdg-home>
+        <gdg-schedule name="schedule" user="{{user}}"></gdg-schedule>
+        <gdg-attending name="attending"></gdg-attending>
+        <!-- <gdg-registration name="registration"></gdg-registration> -->
         <gdg-communityguidelines name="communityguidelines"></gdg-communityguidelines>
       </iron-pages>
 
@@ -372,16 +380,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <div class="footer_logo">
                 <img src="[[rootPath]]images/gdgkl.svg" width="630" height="138">
               </div>
-              <div class="footer_social">
-                <a aria-label="Facebook" href="https://www.facebook.com/GDGKualaLumpur/" target="_blank" rel="noopener">
-                  <iron-icon icon="gdg-icons:facebook"></iron-icon>
-                </a>
-                <a aria-label="Google Plus" href="https://plus.google.com/+GdgMy" target="_blank" rel="noopener">
-                  <iron-icon icon="gdg-icons:googleplus"></iron-icon>
-                </a>
-                <a aria-label="Twitter" href="https://twitter.com/gdgkl" target="_blank" rel="noopener">
-                  <iron-icon icon="gdg-icons:twitter"></iron-icon>
-                </a>
+              <div class="footer_bottom">
+                <div class="footer_link">
+                  <a aria-label="TensorFlow Dev Summit 2017 Extended" href="https://events.gdgkl.org/tfxkl17/" target="_blank" rel="noopener">
+                    TF Dev Summit '17 Extended
+                  </a>
+                  <a aria-label="Community Guidelines" href="[[rootPath]]communityguidelines">
+                    Community Guidelines
+                  </a>
+                </div>
+                <div class="footer_social">
+                  <a aria-label="Facebook" href="https://www.facebook.com/GDGKualaLumpur/" target="_blank" rel="noopener">
+                    <iron-icon icon="gdg-icons:facebook"></iron-icon>
+                  </a>
+                  <a aria-label="Google Plus" href="https://plus.google.com/+GdgMy" target="_blank" rel="noopener">
+                    <iron-icon icon="gdg-icons:googleplus"></iron-icon>
+                  </a>
+                  <a aria-label="Twitter" href="https://twitter.com/gdgkl" target="_blank" rel="noopener">
+                    <iron-icon icon="gdg-icons:twitter"></iron-icon>
+                  </a>
+                  <a aria-label="Meetup" href="https://meetup.com/GDGKualaLumpur/" target="_blank" rel="noopener">
+                    <iron-icon icon="gdg-icons:meetup"></iron-icon>
+                  </a>
+                  <a aria-label="Slack" href="https://gdgmy-slack.herokuapp.com/" target="_blank" rel="noopener">
+                    <iron-icon icon="gdg-icons:slack"></iron-icon>
+                  </a>
+                </div>
               </div>
             </div>
           </footer>
@@ -475,17 +499,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               this.loadComplete = true;
               this._ensureLazyLoaded();
 
-              // this.shadowRoot.querySelector('gdg-sessions').addEventListener('showdialog', e => {
-              //   this.shadowRoot.querySelector('#dialog').open(e)
-              // });
+              this.shadowRoot.querySelector('gdg-schedule').addEventListener('showdialog', e => {
+                this.shadowRoot.querySelector('#dialog').open(e)
+              });
 
               var config = {
-                apiKey: "AIzaSyAehpQe5zbO1JkVoe3pmnCNocmxoGxmlqU",
-                authDomain: "ioxkl17.firebaseapp.com",
-                databaseURL: "https://ioxkl17.firebaseio.com",
-                projectId: "ioxkl17",
-                storageBucket: "ioxkl17.appspot.com",
-                messagingSenderId: "367508360845"
+                apiKey: "AIzaSyD_B8LAxG-1IlfrlZwN5HAbncuwHrCZxU8",
+                authDomain: "gdg-kl.firebaseapp.com",
+                databaseURL: "https://gdg-kl.firebaseio.com",
+                projectId: "gdg-kl",
+                storageBucket: "gdg-kl.appspot.com",
+                messagingSenderId: "824291119922"
               };
 
               if (!firebase.apps.length) {
@@ -496,9 +520,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.user = user;
               })
 
-              firebase.database().ref('site/').once('value').then(snapshot => {
-                this.set('ticket', snapshot.val());
-              })
+              // firebase.database().ref('site/').once('value').then(snapshot => {
+              //   this.set('ticket', snapshot.val());
+              // })
 
               if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('service-worker.js').then(reg => {

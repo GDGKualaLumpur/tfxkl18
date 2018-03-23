@@ -20,7 +20,8 @@
     "iron-ajax": "PolymerElements/iron-ajax#^2.0.2",
     "iron-image": "PolymerElements/iron-image#^2.1.1",
     "polymerfire": "firebase/polymerfire#^2.1.0",
-    "paper-toast": "PolymerElements/paper-toast#^2.0.0"
+    "paper-toast": "PolymerElements/paper-toast#^2.0.0",
+    "good-map": "keanulee/good-map#^0.0.1"
   },
   "resolutions": {
     "polymer": "^2.0.0"
